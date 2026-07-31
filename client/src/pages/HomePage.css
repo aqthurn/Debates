@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --home-paper: #f0e6d2;
+  --home-paper-dark: #ded0b5;
+  --home-ink: #29251f;
+  --home-muted: #756b5e;
+  --home-bronze: #9b6a32;
+  --home-gold: #c49a52;
+  --home-thesis: #354d63;
+  --home-antithesis: #84483e;
+  --home-success: #4f6945;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.home-page {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(196, 154, 82, 0.12),
+      transparent 30%
+    ),
+    var(--home-paper);
+  color: var(--home-ink);
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.home-page::before {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+  opacity: 0.16;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(41, 37, 31, 0.08) 4px
+    );
+}
+
+.home-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  width: min(1180px, calc(100% - 40px));
+  min-height: 82px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--home-ink);
+}
+
+.home-logo {
+  color: var(--home-ink);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+}
+
+.home-navigation {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.home-navigation a {
+  color: var(--home-ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.home-header-button {
+  border: 2px solid var(--home-ink);
+  padding: 10px 18px;
+  box-shadow: 3px 3px 0 var(--home-bronze);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+}
+
+.home-hero {
+  display: grid;
+  width: min(1180px, calc(100% - 40px));
+  min-height: calc(100vh - 82px);
+  margin: 0 auto;
+  padding: 80px 0;
+  align-items: center;
+  gap: 70px;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.85fr);
+}
+
+.home-game-status,
+.section-heading > span,
+.home-final-cta > span {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.58rem;
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+}
+
+.home-game-status {
+  border: 2px solid var(--home-ink);
+  padding: 9px 12px;
+  background: var(--home-paper-dark);
+  box-shadow: 3px 3px 0 var(--home-ink);
+}
+
+.home-pretitle {
+  margin: 34px 0 12px;
+  color: var(--home-bronze);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.home-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(3.2rem, 6vw, 6.2rem);
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+}
+
+.home-description {
+  max-width: 620px;
+  margin: 28px 0 0;
+  color: var(--home-muted);
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.home-actions {
+  display: flex;
+  margin-top: 38px;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.retro-button {
+  display: inline-flex;
+  min-height: 52px;
+  padding: 0 24px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--home-ink);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.62rem;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.retro-button-primary {
+  background: var(--home-ink);
+  color: var(--home-paper);
+  box-shadow: 5px 5px 0 var(--home-bronze);
+}
+
+.retro-button-secondary {
+  background: transparent;
+  color: var(--home-ink);
+  box-shadow: 5px 5px 0 var(--home-paper-dark);
+}
+
+.retro-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--home-bronze);
+}
+
+.retro-button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--home-bronze);
+}
+
+.home-online {
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+  gap: 10px;
+  color: var(--home-muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-online-dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--home-ink);
+  background: var(--home-success);
+  animation: home-blink 1.4s steps(2, end) infinite;
+}
+
+@keyframes home-blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.battle-panel {
+  position: relative;
+  border: 3px solid var(--home-ink);
+  background: var(--home-paper-dark);
+  box-shadow:
+    8px 8px 0 var(--home-bronze),
+    12px 12px 0 var(--home-ink);
+}
+
+.battle-panel::after {
+  position: absolute;
+  inset: 7px;
+  pointer-events: none;
+  border: 1px dashed rgba(41, 37, 31, 0.4);
+  content: '';
+}
+
+.battle-panel-header,
+.battle-round,
+.battle-message {
+  position: relative;
+  z-index: 2;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.battle-panel-header {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--home-ink);
+  font-size: 0.52rem;
+  line-height: 1.5;
+}
+
+.live-indicator {
+  color: var(--home-antithesis);
+  animation: home-blink 1s steps(2, end) infinite;
+}
+
+.battle-topic {
+  position: relative;
+  z-index: 2;
+  padding: 28px 24px 20px;
+  text-align: center;
+}
+
+.battle-topic span {
+  color: var(--home-muted);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+}
+
+.battle-topic h2 {
+  margin: 14px auto 0;
+  font-size: 1.55rem;
+  line-height: 1.35;
+}
+
+.battle-round {
+  display: flex;
+  padding: 14px 20px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px solid var(--home-ink);
+  border-bottom: 2px solid var(--home-ink);
+  background: var(--home-ink);
+  color: var(--home-paper);
+  font-size: 0.55rem;
+}
+
+.battle-round strong {
+  color: var(--home-gold);
+  font-size: 0.9rem;
+}
+
+.battle-players {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.battle-player {
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.battle-player-thesis {
+  border-right: 1px solid var(--home-ink);
+}
+
+.battle-player-antithesis {
+  border-left: 1px solid var(--home-ink);
+}
+
+.player-position {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.52rem;
+}
+
+.battle-player-thesis .player-position {
+  color: var(--home-thesis);
+}
+
+.battle-player-antithesis .player-position {
+  color: var(--home-antithesis);
+}
+
+.battle-player h3 {
+  margin: 13px 0 6px;
+  font-size: 1.7rem;
+}
+
+.battle-player p,
+.battle-player small {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.48rem;
+}
+
+.battle-versus {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  background: var(--home-ink);
+  color: var(--home-gold);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+}
+
+.reputation-bar {
+  height: 12px;
+  margin: 20px 0 9px;
+  border: 2px solid var(--home-ink);
+  background: var(--home-paper);
+}
+
+.reputation-bar span {
+  display: block;
+  height: 100%;
+  background: var(--home-bronze);
+}
+
+.battle-message {
+  padding: 17px;
+  border-top: 2px solid var(--home-ink);
+  font-size: 0.48rem;
+  text-align: center;
+}
+
+.how-section {
+  padding: 110px max(20px, calc((100% - 1180px) / 2));
+  border-top: 3px solid var(--home-ink);
+  background: var(--home-paper-dark);
+}
+
+.section-heading {
+  max-width: 680px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.section-heading h2,
+.home-final-cta h2 {
+  margin: 18px 0;
+  font-size: clamp(2.5rem, 5vw, 4.7rem);
+  line-height: 1;
+}
+
+.section-heading p,
+.home-final-cta p {
+  color: var(--home-muted);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.steps-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.step-card {
+  position: relative;
+  min-height: 260px;
+  padding: 32px;
+  border: 2px solid var(--home-ink);
+  background: var(--home-paper);
+  box-shadow: 6px 6px 0 var(--home-ink);
+}
+
+.step-number {
+  display: block;
+  margin-bottom: 36px;
+  color: var(--home-bronze);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.5rem;
+}
+
+.step-card h3 {
+  margin: 0 0 14px;
+  font-size: 1.55rem;
+}
+
+.step-card p {
+  margin: 0;
+  color: var(--home-muted);
+  line-height: 1.7;
+}
+
+.home-final-cta {
+  padding: 120px 20px;
+  border-top: 3px solid var(--home-ink);
+  text-align: center;
+}
+
+.home-final-cta p {
+  max-width: 580px;
+  margin: 0 auto 34px;
+}
+
+.home-footer {
+  display: flex;
+  min-height: 100px;
+  padding: 30px max(20px, calc((100% - 1180px) / 2));
+  align-items: center;
+  justify-content: space-between;
+  border-top: 3px solid var(--home-ink);
+  background: var(--home-ink);
+  color: var(--home-paper);
+}
+
+.home-footer strong {
+  letter-spacing: 0.2em;
+}
+
+.home-footer span {
+  color: var(--home-paper-dark);
+  font-style: italic;
+}
+
+@media (max-width: 920px) {
+  .home-hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .battle-panel {
+    width: min(100%, 620px);
+    margin: 0 auto;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-header {
+    min-height: 70px;
+  }
+
+  .home-navigation > a:first-child {
+    display: none;
+  }
+
+  .home-header-button {
+    padding: 9px 12px;
+    font-size: 0.48rem;
+  }
+
+  .home-hero {
+    width: min(100% - 28px, 1180px);
+    padding: 60px 0 80px;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(2.8rem, 15vw, 4rem);
+  }
+
+  .home-description {
+    font-size: 1.05rem;
+  }
+
+  .home-actions {
+    flex-direction: column;
+  }
+
+  .retro-button {
+    width: 100%;
+  }
+
+  .battle-panel {
+    box-shadow:
+      5px 5px 0 var(--home-bronze),
+      8px 8px 0 var(--home-ink);
+  }
+
+  .battle-panel-header {
+    gap: 16px;
+  }
+
+  .battle-players {
+    grid-template-columns: 1fr;
+  }
+
+  .battle-player-thesis,
+  .battle-player-antithesis {
+    border: 0;
+  }
+
+  .battle-versus {
+    min-height: 44px;
+  }
+
+  .how-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .home-final-cta {
+    padding: 90px 20px;
+  }
+
+  .home-footer {
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+  }
+}
