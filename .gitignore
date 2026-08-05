@@ -95,6 +95,7 @@ server/node_modules/
 # Builds
 dist/
 client/dist/
+*.tsbuildinfo
 server/dist/
 
 # Variáveis de ambiente
@@ -111,3 +112,10 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 .vscode/
+
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+.env.*
+*.log

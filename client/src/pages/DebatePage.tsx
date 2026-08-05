@@ -1,40 +1,20 @@
 
 import { useEffect, useRef, useState } from 'react';
-import { io, type Socket } from 'socket.io-client';
 
 
-type Argumento = {
-  autor: string;
-  conteudo: string;
-};
+import type { Argumento, Mensagem } from '../types/debate';
+import { socket } from '../services/socket';
 
-type Mensagem = Argumento & {
-  id: string;
-};
 
-interface EventosDoServidor {
-  novo_argumento_na_tela: (dados: Argumento) => void;
-}
-
-interface EventosDoCliente {
-  enviar_argumento: (dados: Argumento) => void;
-}
-
-type EstadoConexao = 'conectando' | 'conectado' | 'desconectado';
-
-const ENDERECO_SERVIDOR = 'http://localhost:3001';
 const CHAVE_NOME = 'agora:nome-do-orador';
 const LIMITE_NOME = 40;
 const LIMITE_TEXTO = 500;
 
-const socket: Socket<EventosDoServidor, EventosDoCliente> = io(
-  ENDERECO_SERVIDOR,
-  {
-    reconnection: true,
-    reconnectionAttempts: Infinity,
-    reconnectionDelay: 1_000,
-  },
-);
+
+
+type EstadoConexao = 'conectando' | 'conectado' | 'desconectado';
+
+
 
 const criarIdMensagem = () => {
   if (typeof crypto !== 'undefined' && crypto.randomUUID) {
