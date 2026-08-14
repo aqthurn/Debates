@@ -1,5 +1,52 @@
 import { debates, gerarIdDebate } from './debate.store.js';
-import type { Debate, Participante, Posicao } from './debate.types.js';
+import type { Debate, Participante, Posicao, Papel } from './debate.types.js';
+
+
+type ResultadoEntrada =
+    | { ok: true; debate: Debate }
+    | { ok: false; erro: string };
+
+
+export function entrarNoDebate(
+    debateId: string,
+    socketId: string,
+    nome: string,
+    papel: Papel,
+    posicao?: Posicao,
+): ResultadoEntrada {
+
+    const debate = buscarDebate(debateId);
+
+    if (!debate) {
+        return { ok: false, erro: 'sala_nao_encontrada' };
+    }
+
+    if (papel === 'espectador') {
+        debate.espectadores.push({ socketId, nome });
+
+        return { ok: true, debate };
+    }
+    if (posicao === undefined) {
+        return { ok: false, erro: 'posicao_nao_informada' };
+    }
+
+    if (debate.participantes[posicao] !== null) {
+        return { ok: false, erro: 'posicao_ocupada' };
+    }
+
+    const participante: Participante = {
+        socketId,
+        nome,
+        posicao
+    }
+    debate.participantes[posicao] = participante
+    return { ok: true, debate };
+
+
+
+}
+
+
 
 
 export function criarDebate(
